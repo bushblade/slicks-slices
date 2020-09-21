@@ -16,7 +16,7 @@ function Nav() {
             <Link to='/'>LOGO</Link>
           </li>
           <li>
-            <Link to='/slicemasters'>SliceMasteres</Link>
+            <Link to='/slicemasters'>SliceMasters</Link>
           </li>
           <li>
             <Link to='/order'>Order Ahead!</Link>
