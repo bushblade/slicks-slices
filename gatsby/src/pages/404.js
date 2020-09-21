@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FourOhFour = () => {
+function FourOhFour() {
   return (
     <div>
       <p>Hey that page doesn't exist</p>

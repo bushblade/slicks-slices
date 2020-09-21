@@ -1,10 +1,10 @@
 import React from 'react'
 
-const HomePage = () => {
+function HomePage() {
   return (
-    <div>
+    <>
       <p>Hey I'm the home page</p>
-    </div>
+    </>
   )
 }
 

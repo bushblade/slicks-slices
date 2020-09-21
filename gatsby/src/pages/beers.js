@@ -1,10 +1,10 @@
 import React from 'react'
 
-const BeersPage = () => {
+function BeersPage() {
   return (
-    <div>
+    <>
       <p>Hey I'm the Beers page</p>
-    </div>
+    </>
   )
 }
 
