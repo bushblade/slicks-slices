@@ -5,6 +5,9 @@ import Logo from './Logo'
 
 const NavStyles = styled.nav`
   margin-bottom: 3rem;
+  .logo {
+    transform: translateY(-25%);
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -14,8 +17,10 @@ const NavStyles = styled.nav`
     grid-template-columns: 1fr 1fr auto 1fr 1fr;
     grid-gap: 2rem;
     align-items: center;
+    margin-top: -6rem;
   }
   li {
+    transition: all 0.1s ease;
     --rotate: -2deg;
     transform: rotate(var(--rotate));
     order: 1;
@@ -35,6 +40,9 @@ const NavStyles = styled.nav`
   a {
     font-size: 3rem;
     text-decoration: none;
+    // &[aria-current='page'] {
+    //   color: var(--red);
+    // }
     &:hover {
       color: var(--red);
     }
