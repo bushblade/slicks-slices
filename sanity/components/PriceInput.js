@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event'
 
 function createPatchFrom(value) {
@@ -11,6 +12,7 @@ const formatMoney = Intl.NumberFormat('en-GB', {
 }).format
 
 function PriceInput({ type, value, onChange, inputComponent }) {
+  console.log(inputComponent)
   return (
     <div>
       <h2>
@@ -30,6 +32,12 @@ function PriceInput({ type, value, onChange, inputComponent }) {
 // Sanity accessibility
 PriceInput.focus = function () {
   this._inputElement.focus()
+}
+
+PriceInput.propTypes = {
+  type: PropTypes.object,
+  value: PropTypes.number,
+  onChange: PropTypes.func,
 }
 
 export default PriceInput
