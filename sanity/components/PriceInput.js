@@ -1,4 +1,4 @@
-import React, { component } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event'
 
@@ -11,7 +11,7 @@ const formatMoney = Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 }).format
 
-class PriceInput extends component {
+class PriceInput extends Component {
   render() {
     const { type, value, onChange } = this.props
     return (
