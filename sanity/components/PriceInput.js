@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { component } from 'react'
 import PropTypes from 'prop-types'
 import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event'
 
@@ -11,28 +11,30 @@ const formatMoney = Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 }).format
 
-function PriceInput({ type, value, onChange, inputComponent }) {
-  console.log(inputComponent)
-  return (
-    <div>
-      <h2>
-        {type.title}- {value ? formatMoney(value / 100) : ''}
-      </h2>
-      <p>{type.description}</p>
-      <input
-        type={type.name}
-        value={value}
-        onChange={(event) => onChange(createPatchFrom(event.target.value))}
-        ref={inputComponent}
-      />
-    </div>
-  )
+class PriceInput extends component {
+  render() {
+    const { type, value, onChange } = this.props
+    return (
+      <div>
+        <h2>
+          {type.title}- {value ? formatMoney(value / 100) : ''}
+        </h2>
+        <p>{type.description}</p>
+        <input
+          type={type.name}
+          value={value}
+          onChange={(event) => onChange(createPatchFrom(event.target.value))}
+          ref={(element) => (this._inputElement = element)}
+        />
+      </div>
+    )
+  }
 }
 
 // Sanity accessibility
-PriceInput.focus = function () {
-  this._inputElement.focus()
-}
+// PriceInput.focus = function () {
+//   this._inputElement.focus()
+// }
 
 PriceInput.propTypes = {
   type: PropTypes.object,
