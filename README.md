@@ -5,3 +5,4 @@
 ## Todos
 
 1. If every ingredient of pizza is veggie then show pizza as vegetarian.
+
