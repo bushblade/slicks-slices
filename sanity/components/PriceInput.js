@@ -12,6 +12,10 @@ const formatMoney = Intl.NumberFormat('en-GB', {
 }).format
 
 class PriceInput extends Component {
+  focus() {
+    this._inputElement.focus()
+  }
+
   render() {
     const { type, value, onChange } = this.props
     return (
@@ -30,11 +34,6 @@ class PriceInput extends Component {
     )
   }
 }
-
-// Sanity accessibility
-// PriceInput.focus = function () {
-//   this._inputElement.focus()
-// }
 
 PriceInput.propTypes = {
   type: PropTypes.object,
