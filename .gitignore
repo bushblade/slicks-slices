@@ -2,3 +2,4 @@ node_modules/
 .cache/
 sanity/config/@sanity/.checksums
 gatsby/.env
+gatsby/public/
