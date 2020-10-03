@@ -41,6 +41,7 @@ function countPizzasInToppings(pizzas) {
           name: topping.name,
           id: topping.id,
           count: 1,
+          slug: topping.slug.current,
         }
       }
       return acc
@@ -66,6 +67,9 @@ function ToppingsFilter() {
           toppings {
             name
             id
+            slug {
+              current
+            }
           }
         }
       }
@@ -78,7 +82,7 @@ function ToppingsFilter() {
   return (
     <ToppingStyles>
       {toppingsWithCounts.map((topping) => (
-        <Link to={`/topping/${topping.name}`} key={topping.id}>
+        <Link to={`/topping/${topping.slug}`} key={topping.id}>
           <span className='name'>{topping.name}</span>
           <span className='count'>{topping.count}</span>
         </Link>
