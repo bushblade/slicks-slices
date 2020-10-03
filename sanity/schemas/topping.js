@@ -16,6 +16,14 @@ export default {
       description: 'What is the name of the topping?',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 100,
+      },
+    },
+    {
       name: 'vegetarian',
       title: 'Vegetarian',
       type: 'boolean',
