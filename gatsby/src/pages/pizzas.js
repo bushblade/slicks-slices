@@ -7,11 +7,22 @@ function PizzasPage({
   data: {
     allSanityPizza: { nodes: pizzas },
   },
+  pageContext,
 }) {
+  // filter Pizzas by topping or show all pizzas
+  const pizzasToShow = pageContext.topping
+    ? pizzas.filter(({ toppings }) => {
+        for (const { id } of toppings) {
+          if (id === pageContext.topping.id) return true
+        }
+        return false
+      })
+    : pizzas
+
   return (
     <>
       <ToppingsFilter />
-      <PizzaList pizzas={pizzas} />
+      <PizzaList pizzas={pizzasToShow} />
     </>
   )
 }
