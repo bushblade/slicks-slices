@@ -54,7 +54,8 @@ async function turnToppingsIntoPages({ graphql, actions }) {
       component: toppingsTemplate,
       context: {
         topping,
-        // TODO regex for topping
+        // provide topping id to filter in page query
+        toppingId: topping.id,
       },
     })
   })

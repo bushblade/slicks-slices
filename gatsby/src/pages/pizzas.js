@@ -7,29 +7,20 @@ function PizzasPage({
   data: {
     allSanityPizza: { nodes: pizzas },
   },
-  pageContext,
 }) {
-  // filter Pizzas by topping or show all pizzas
-  const pizzasToShow = pageContext.topping
-    ? pizzas.filter(({ toppings }) => {
-        for (const { id } of toppings) {
-          if (id === pageContext.topping.id) return true
-        }
-        return false
-      })
-    : pizzas
-
   return (
     <>
       <ToppingsFilter />
-      <PizzaList pizzas={pizzasToShow} />
+      <PizzaList pizzas={pizzas} />
     </>
   )
 }
 
 export const query = graphql`
-  query {
-    allSanityPizza {
+  query PizzaQuery($toppingId: String) {
+    allSanityPizza(
+      filter: { toppings: { elemMatch: { id: { eq: $toppingId } } } }
+    ) {
       nodes {
         name
         id
