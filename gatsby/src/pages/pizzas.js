@@ -7,10 +7,11 @@ function PizzasPage({
   data: {
     allSanityPizza: { nodes: pizzas },
   },
+  pageContext,
 }) {
   return (
     <>
-      <ToppingsFilter />
+      <ToppingsFilter activeTopping={pageContext.topping} />
       <PizzaList pizzas={pizzas} />
     </>
   )
