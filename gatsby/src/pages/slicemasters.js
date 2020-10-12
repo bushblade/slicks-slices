@@ -39,6 +39,7 @@ const SliceMasterStyle = styled.div`
 function SliceMastersPage({ data: { slicemasters } }) {
   return (
     <>
+      <p>{process.env.GATSBY_PAGE_SIZE}</p>
       <SliceMasterGrid>
         {slicemasters.nodes.map((person) => (
           <SliceMasterStyle>
