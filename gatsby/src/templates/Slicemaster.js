@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import SEO from '../components/SEO'
 
 function Slicemaster({
   data: {
@@ -8,17 +9,20 @@ function Slicemaster({
       name,
       description,
       image: {
-        asset: { fluid },
+        asset: { fluid, src },
       },
     },
   },
 }) {
   return (
-    <div>
-      <Img fluid={fluid} />
-      <h2>{name}</h2>
-      <p>{description}</p>
-    </div>
+    <>
+      <SEO title={name} image={fluid.src} />
+      <div className='center'>
+        <Img fluid={fluid} />
+        <h2 className='mark'>{name}</h2>
+        <p>{description}</p>
+      </div>
+    </>
   )
 }
 
@@ -31,7 +35,7 @@ export const query = graphql`
       description
       image {
         asset {
-          fluid(maxWidth: 800) {
+          fluid(maxWidth: 1000, maxHeight: 750) {
             ...GatsbySanityImageFluid
           }
         }

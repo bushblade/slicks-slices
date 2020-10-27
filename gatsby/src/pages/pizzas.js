@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PizzaList from '../components/PizzaList'
 import ToppingsFilter from '../components/ToppingsFilter'
+import SEO from '../components/SEO'
 
 function PizzasPage({
   data: {
@@ -11,6 +12,13 @@ function PizzasPage({
 }) {
   return (
     <>
+      <SEO
+        title={
+          pageContext.topping
+            ? `Pizzas With ${pageContext.topping.name}`
+            : `All Pizzas`
+        }
+      />
       <ToppingsFilter activeTopping={pageContext.topping} />
       <PizzaList pizzas={pizzas} />
     </>
