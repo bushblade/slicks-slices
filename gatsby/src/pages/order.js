@@ -7,11 +7,18 @@ import calculatePizzaPrice from '../utils/calculatePizzaPrice'
 import formatMoney from '../utils/formatMoney'
 import OrderStyles from '../styles/OrderStyles'
 import MenuItemStyles from '../styles/MenuItemStyles'
+import usePizza from '../utils/usePizza'
+import PizzaOrder from '../components/PizzaOrder'
 
 function OrdersPage({ data: { allSanityPizza } }) {
   const [formData, setFormData] = useForm({
     name: '',
     email: '',
+  })
+
+  const { order, addToOrder, removeFromOrder } = usePizza({
+    pizzas: allSanityPizza.nodes,
+    inputs: formData,
   })
 
   return (
@@ -52,7 +59,11 @@ function OrdersPage({ data: { allSanityPizza } }) {
               </div>
               <div>
                 {'S,M,L'.split(',').map((size) => (
-                  <button key={size} type='button'>
+                  <button
+                    key={size}
+                    type='button'
+                    onClick={() => addToOrder({ id: pizza.id, size })}
+                  >
                     {size} {formatMoney(calculatePizzaPrice(pizza.price, size))}
                   </button>
                 ))}
@@ -62,6 +73,11 @@ function OrdersPage({ data: { allSanityPizza } }) {
         </fieldset>
         <fieldset className='order'>
           <legend>Order</legend>
+          <PizzaOrder
+            order={order}
+            removeFromOrder={removeFromOrder}
+            pizzas={allSanityPizza.nodes}
+          />
         </fieldset>
       </OrderStyles>
     </>
