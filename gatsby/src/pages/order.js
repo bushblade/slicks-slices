@@ -62,7 +62,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
                   <button
                     key={size}
                     type='button'
-                    onClick={() => addToOrder({ id: pizza.id, size })}
+                    onClick={() => addToOrder({ ...pizza, size })}
                   >
                     {size} {formatMoney(calculatePizzaPrice(pizza.price, size))}
                   </button>
@@ -73,11 +73,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
         </fieldset>
         <fieldset className='order'>
           <legend>Order</legend>
-          <PizzaOrder
-            order={order}
-            removeFromOrder={removeFromOrder}
-            pizzas={allSanityPizza.nodes}
-          />
+          <PizzaOrder order={order} removeFromOrder={removeFromOrder} />
         </fieldset>
       </OrderStyles>
     </>
