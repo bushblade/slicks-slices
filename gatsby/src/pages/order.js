@@ -5,6 +5,8 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import calculatePizzaPrice from '../utils/calculatePizzaPrice'
 import formatMoney from '../utils/formatMoney'
+import OrderStyles from '../styles/OrderStyles'
+import MenuItemStyles from '../styles/MenuItemStyles'
 
 function OrdersPage({ data: { allSanityPizza } }) {
   const [formData, setFormData] = useForm({
@@ -15,7 +17,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
   return (
     <>
       <SEO title='Order a Pizza!!' />
-      <form>
+      <OrderStyles>
         <fieldset>
           <legend>Your Info</legend>
           <label htmlFor='name'>Name</label>
@@ -35,10 +37,10 @@ function OrdersPage({ data: { allSanityPizza } }) {
             value={formData.email}
           />
         </fieldset>
-        <fieldset>
+        <fieldset className='menu'>
           <legend>Menu</legend>
           {allSanityPizza.nodes.map((pizza) => (
-            <div key={pizza.id}>
+            <MenuItemStyles key={pizza.id}>
               <Img
                 width='50'
                 height='50'
@@ -55,13 +57,13 @@ function OrdersPage({ data: { allSanityPizza } }) {
                   </button>
                 ))}
               </div>
-            </div>
+            </MenuItemStyles>
           ))}
         </fieldset>
-        <fieldset>
+        <fieldset className='order'>
           <legend>Order</legend>
         </fieldset>
-      </form>
+      </OrderStyles>
     </>
   )
 }
