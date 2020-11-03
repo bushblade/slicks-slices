@@ -9,6 +9,7 @@ import OrderStyles from '../styles/OrderStyles'
 import MenuItemStyles from '../styles/MenuItemStyles'
 import usePizza from '../utils/usePizza'
 import PizzaOrder from '../components/PizzaOrder'
+import calculateOrderTotal from '../utils/calculateOrderTotal'
 
 function OrdersPage({ data: { allSanityPizza } }) {
   const [formData, setFormData] = useForm({
@@ -74,6 +75,10 @@ function OrdersPage({ data: { allSanityPizza } }) {
         <fieldset className='order'>
           <legend>Order</legend>
           <PizzaOrder order={order} removeFromOrder={removeFromOrder} />
+        </fieldset>
+        <fieldset>
+          <h3>Your Total is {calculateOrderTotal(order)}</h3>
+          <button type='submit'>Order Ahead</button>
         </fieldset>
       </OrderStyles>
     </>
