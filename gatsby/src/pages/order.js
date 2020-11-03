@@ -77,7 +77,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
           <PizzaOrder order={order} removeFromOrder={removeFromOrder} />
         </fieldset>
         <fieldset>
-          <h3>Your Total is {calculateOrderTotal(order)}</h3>
+          <h3>Your Total is {formatMoney(calculateOrderTotal(order))}</h3>
           <button type='submit'>Order Ahead</button>
         </fieldset>
       </OrderStyles>
