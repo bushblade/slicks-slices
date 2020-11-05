@@ -17,15 +17,27 @@ function OrdersPage({ data: { allSanityPizza } }) {
     email: '',
   })
 
-  const { order, addToOrder, removeFromOrder } = usePizza({
+  const {
+    order,
+    addToOrder,
+    removeFromOrder,
+    error,
+    loading,
+    message,
+    submitOrder,
+  } = usePizza({
     pizzas: allSanityPizza.nodes,
-    inputs: formData,
+    formData,
   })
+
+  if (message) {
+    return <p>{message}</p>
+  }
 
   return (
     <>
       <SEO title='Order a Pizza!!' />
-      <OrderStyles>
+      <OrderStyles onSubmit={submitOrder}>
         <fieldset>
           <legend>Your Info</legend>
           <label htmlFor='name'>Name</label>
@@ -78,7 +90,10 @@ function OrdersPage({ data: { allSanityPizza } }) {
         </fieldset>
         <fieldset>
           <h3>Your Total is {formatMoney(calculateOrderTotal(order))}</h3>
-          <button type='submit'>Order Ahead</button>
+          <div>{error ? <p>{error}</p> : null}</div>
+          <button type='submit' disabled={loading}>
+            {loading ? 'Placing Order...' : 'Order Ahead'}
+          </button>
         </fieldset>
       </OrderStyles>
     </>
