@@ -9,7 +9,7 @@ export default function usePizza({ pizzas, formData }) {
   const [order, setOrder] = useContext(OrderContext)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState(null)
   // 2. make a function to add things to order
   function addToOrder(orderedPizza) {
     setOrder([...order, orderedPizza])
@@ -23,8 +23,6 @@ export default function usePizza({ pizzas, formData }) {
   async function submitOrder(e) {
     e.preventDefault()
     setLoading(true)
-    setError(null)
-    setMessage('Go Eat!')
     // get all data
     const body = {
       order: attachNamesAndPrices(order),
@@ -34,7 +32,8 @@ export default function usePizza({ pizzas, formData }) {
     console.log(body)
     // 4. send this data to a serverless function when then checkout
     const res = await fetch(
-      `${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`,
+      // `${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`,
+      '/api/placeOrder',
       {
         method: 'POST',
         headers: {

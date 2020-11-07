@@ -9,6 +9,10 @@ export default {
     description: 'Best Pizza in West Yorkshire!',
     twitter: `@slicksSlices`,
   },
+  proxy: {
+    prefix: '/api',
+    url: 'http://localhost:8888',
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
