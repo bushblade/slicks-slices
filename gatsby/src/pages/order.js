@@ -25,10 +25,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
     loading,
     message,
     submitOrder,
-  } = usePizza({
-    pizzas: allSanityPizza.nodes,
-    formData,
-  })
+  } = usePizza(formData)
 
   if (message) {
     return <p>{message}</p>

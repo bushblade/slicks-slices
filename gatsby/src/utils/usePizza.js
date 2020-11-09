@@ -4,7 +4,7 @@ import formatMoney from './formatMoney'
 import calculateOrderTotal from './calculateOrderTotal'
 import attachNamesAndPrices from './attachNamesAndPrices'
 
-export default function usePizza({ pizzas, formData }) {
+export default function usePizza(formData) {
   // 1. create some state to hold our order
   const [order, setOrder] = useContext(OrderContext)
   const [error, setError] = useState(null)
