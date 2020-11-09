@@ -37,7 +37,7 @@ const transporter = nodemailer.createTransport({
 })
 
 function wait(ms = 0) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, _) => {
     setTimeout(resolve, ms)
   })
 }
@@ -45,6 +45,13 @@ function wait(ms = 0) {
 exports.handler = async (event, context) => {
   const body = JSON.parse(event.body)
   console.log(body)
+  // check for honepot
+  if (body.maplesyrup) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Boop beep bop zzz goodbye ERR34234' }),
+    }
+  }
   // validate data
   const requiredFields = ['email', 'name', 'order']
   for (const field of requiredFields) {

@@ -15,6 +15,7 @@ function OrdersPage({ data: { allSanityPizza } }) {
   const [formData, setFormData] = useForm({
     name: '',
     email: '',
+    maplesyrup: '',
   })
 
   const {
@@ -52,6 +53,14 @@ function OrdersPage({ data: { allSanityPizza } }) {
             id='email'
             onChange={setFormData}
             value={formData.email}
+          />
+          <input
+            type='email'
+            name='maplesyrup'
+            id='maplesyrup'
+            onChange={setFormData}
+            value={formData.maplesyrup}
+            className='maplesyrup'
           />
         </fieldset>
         <fieldset className='menu' disabled={loading}>
