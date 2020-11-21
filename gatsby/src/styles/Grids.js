@@ -22,7 +22,7 @@ export const ItemStyles = styled.div`
     font-size: 0;
   }
   p {
-    transform: rotate(-2deg);
+    transform: rotate(-2deg) translateY(-150%);
     position: absolute;
     width: 100%;
     left: 0;

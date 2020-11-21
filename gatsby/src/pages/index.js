@@ -2,11 +2,20 @@ import React from 'react'
 import useLatestData from '../utils/useLatestData'
 import { HomePageGrid } from '../styles/Grids'
 import LoadingGrid from '../components/LoadingGrid'
+import ItemGrid from '../components/ItemGrid'
 
 function CurrentlySlicing({ slicemasters }) {
   return (
     <div>
-      {!slicemasters ? <LoadingGrid count={4} /> : null}
+      <h2 className='center'>
+        <span className='mark tilt'>Slicemasters on</span>
+      </h2>
+      <p>Standing by, ready to slice you up!</p>
+      {!slicemasters ? (
+        <LoadingGrid count={4} />
+      ) : (
+        <ItemGrid items={slicemasters} />
+      )}
       {slicemasters && !slicemasters.length ? (
         <p>No one is working right now!</p>
       ) : null}
@@ -17,7 +26,11 @@ function CurrentlySlicing({ slicemasters }) {
 function HotSlices({ hotSlices }) {
   return (
     <div>
-      {!hotSlices ? <LoadingGrid count={4} /> : null}
+      <h2 className='center'>
+        <span className='mark tilt'>Hot Slices on</span>
+      </h2>
+      <p>Come on by, buy the slice!</p>
+      {!hotSlices ? <LoadingGrid count={4} /> : <ItemGrid items={hotSlices} />}
       {hotSlices && !hotSlices.length ? (
         <p>There are no hot slices right now!</p>
       ) : null}
