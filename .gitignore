@@ -3,3 +3,4 @@ node_modules/
 sanity/config/@sanity/.checksums
 gatsby/.env
 gatsby/public/
+sanity/dist
