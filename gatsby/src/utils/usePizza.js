@@ -29,7 +29,6 @@ export default function usePizza(formData) {
       total: formatMoney(calculateOrderTotal(order)),
       ...formData,
     }
-    console.log(body)
     // 4. send this data to a serverless function when then checkout
     const res = await fetch(
       // `${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`,
